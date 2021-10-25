@@ -8,12 +8,9 @@ class Cv extends Component {
 
   render() {
     return (
-      <div className="container box m-5">
-        <header className="mb-6">
-          <h1 className="title">Resume Builder</h1>
-        </header>
+      <section className="has-text-left is-flex is-flex-direction-column">
         <Bio />
-      </div>
+      </section>
     );
   }
 }
