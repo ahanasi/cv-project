@@ -7,15 +7,15 @@ function BioView(props) {
 
   return (
     <div className="BioView">
-      <div className="is-flex is-justify-content-space-between">
-        <div className="has-text-info is-size-1">{name}</div>
+      <header className="is-flex is-justify-content-space-between">
+        <h2 className="has-text-info is-size-1">{name}</h2>
         <button className="button is-ghost has-text-info-dark" onClick={toggleEdit.bind(this)}>
           <span className="icon is-small">
             <FontAwesomeIcon icon={faEdit} />
           </span>
           <span>Edit</span>
         </button>
-      </div>
+      </header>
       <div className="is-flex is-justify-content-start is-size-5">
         <div className="mr-2">{address}</div>
         {phone !== "" && (

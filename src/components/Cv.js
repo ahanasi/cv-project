@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Bio from "./Bio";
+import Education from "./Education";
+
 
 class Cv extends Component {
   //   constructor(props) {
@@ -10,6 +12,8 @@ class Cv extends Component {
     return (
       <section className="has-text-left is-flex is-flex-direction-column">
         <Bio />
+        <hr />
+        <Education />
       </section>
     );
   }
