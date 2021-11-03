@@ -12,3 +12,7 @@ code {
 .input.field-body {
   width: 20rem;
 }
+
+.input.is-small {
+  width: 18rem;
+}

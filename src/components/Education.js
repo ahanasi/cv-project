@@ -35,6 +35,8 @@ class Education extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.toggleEducationForm = this.toggleEducationForm.bind(this);
     this.deleteDegree = this.deleteDegree.bind(this);
+    this.editDegree = this.editDegree.bind(this);
+    this.changeDegree = this.changeDegree.bind(this);
   }
 
   handleInputChange(event) {
@@ -88,15 +90,46 @@ class Education extends Component {
   deleteDegree(degreeID) {
     const degreeItems = this.state.degrees.filter((degree) => degree.id !== degreeID);
     this.setState({ degrees: degreeItems });
-    console.log(this.state.degrees);
+  }
+
+  editDegree(degreeID) {
+    const degreeIndex = this.state.degrees.findIndex((degree) => degree.id === degreeID);
+
+    this.setState((prevState) => ({
+      degrees: prevState.degrees.map((degree, i) => {
+        const degreeToEdit = Object.assign({}, degree);
+        if (i === degreeIndex) {
+          degreeToEdit.isEditable = !degreeToEdit.isEditable;
+        }
+        return degreeToEdit;
+      }),
+    }));
+  }
+
+  changeDegree(e, id) {
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
+
+    const degreeIndex = this.state.degrees.findIndex((degree) => degree.id === id);
+
+    this.setState((prevState) => ({
+      degrees: prevState.degrees.map((degree, i) => {
+        const degreeToEdit = Object.assign({}, degree);
+        if (i === degreeIndex) {
+          degreeToEdit.degreeInfo[name] = value;
+        }
+        return degreeToEdit;
+      }),
+    }));
   }
 
   render() {
     const degreeItems = this.state.degrees.map((degree) => {
       return (
         <li key={degree.id} className="is-flex is-align-items-baseline">
-          <DegreeItem degreeInfo={degree.degreeInfo} id={degree.id} isEditable={degree.isEditable} />
-          <button className="button is-ghost has-text-info-dark" aria-label="Edit Degree">
+          <DegreeItem degreeInfo={degree.degreeInfo} id={degree.id} isEditable={degree.isEditable} changeDegree={this.changeDegree} />
+          <button className="button is-ghost has-text-info-dark" aria-label="Edit Degree" onClick={() => this.editDegree(degree.id)}>
             <span className="icon is-small">
               <FontAwesomeIcon icon={faPencilAlt} />
             </span>
