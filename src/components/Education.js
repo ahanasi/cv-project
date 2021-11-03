@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { faPlus, faGraduationCap, faSchool, faCalendarDay } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faPencilAlt, faMinusCircle, faGraduationCap, faSchool, faCalendarDay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { v4 as uuidv4 } from "uuid";
 import DegreeItem from "./DegreeItem";
@@ -34,6 +34,7 @@ class Education extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.toggleEducationForm = this.toggleEducationForm.bind(this);
+    this.deleteDegree = this.deleteDegree.bind(this);
   }
 
   handleInputChange(event) {
@@ -83,11 +84,28 @@ class Education extends Component {
       },
     });
   }
+
+  deleteDegree(degreeID) {
+    const degreeItems = this.state.degrees.filter((degree) => degree.id !== degreeID);
+    this.setState({ degrees: degreeItems });
+    console.log(this.state.degrees);
+  }
+
   render() {
     const degreeItems = this.state.degrees.map((degree) => {
       return (
-        <li key={degree.id}>
+        <li key={degree.id} className="is-flex is-align-items-baseline">
           <DegreeItem degreeInfo={degree.degreeInfo} id={degree.id} isEditable={degree.isEditable} />
+          <button className="button is-ghost has-text-info-dark" aria-label="Edit Degree">
+            <span className="icon is-small">
+              <FontAwesomeIcon icon={faPencilAlt} />
+            </span>
+          </button>
+          <button className="button is-ghost has-text-danger-dark pl-2" aria-label="Delete Degree" onClick={() => this.deleteDegree(degree.id)}>
+            <span className="icon is-small">
+              <FontAwesomeIcon icon={faMinusCircle} />
+            </span>
+          </button>
         </li>
       );
     });
