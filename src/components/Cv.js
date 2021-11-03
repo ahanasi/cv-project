@@ -4,9 +4,6 @@ import Education from "./Education";
 import Experience from "./Experience";
 
 class Cv extends Component {
-  //   constructor(props) {
-  //     super(props);
-  //   }
 
   render() {
     return (
