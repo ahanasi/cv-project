@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { faPlus, faGraduationCap, faSchool, faCalendarDay, faCross } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faGraduationCap, faSchool, faCalendarDay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { v4 as uuidv4 } from "uuid";
 import DegreeItem from "./DegreeItem";
@@ -103,7 +103,7 @@ class Education extends Component {
           </button>
         </header>
         <ul className="DegreeList mt-2">{degreeItems}</ul>
-        <form className="DegreeForm card is-flex is-flex-direction-column has-background-info-light mt-5" onSubmit={this.handleSubmit}>
+        <form className="DegreeForm card is-flex is-flex-direction-column has-background-info-light mt-5 is-hidden" onSubmit={this.handleSubmit}>
           <div className="is-horizontal card-content is-flex is-justify-content-space-evenly">
             <div className="field-label is-normal">
               <label className="label">Degree Info.</label>
