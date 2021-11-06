@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { faPlus, faPencilAlt, faMinusCircle, faGraduationCap, faSchool, faCalendarDay } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faPencilAlt, faCheck, faMinusCircle, faGraduationCap, faSchool, faCalendarDay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { v4 as uuidv4 } from "uuid";
 import DegreeItem from "./DegreeItem";
@@ -126,14 +126,28 @@ class Education extends Component {
 
   render() {
     const degreeItems = this.state.degrees.map((degree) => {
-      return (
-        <li key={degree.id} className="is-flex is-align-items-baseline">
-          <DegreeItem degreeInfo={degree.degreeInfo} id={degree.id} isEditable={degree.isEditable} changeDegree={this.changeDegree} />
+      let editBtn;
+      if (degree.isEditable) {
+        editBtn = (
+          <button className="button is-ghost has-text-success" aria-label="Edit Degree" onClick={() => this.editDegree(degree.id)}>
+            <span className="icon is-small">
+              <FontAwesomeIcon icon={faCheck} />
+            </span>
+          </button>
+        );
+      } else {
+        editBtn = (
           <button className="button is-ghost has-text-info-dark" aria-label="Edit Degree" onClick={() => this.editDegree(degree.id)}>
             <span className="icon is-small">
               <FontAwesomeIcon icon={faPencilAlt} />
             </span>
           </button>
+        );
+      }
+      return (
+        <li key={degree.id} className="is-flex is-align-items-baseline">
+          <DegreeItem degreeInfo={degree.degreeInfo} id={degree.id} isEditable={degree.isEditable} changeDegree={this.changeDegree} />
+          {editBtn}
           <button className="button is-ghost has-text-danger-dark pl-2" aria-label="Delete Degree" onClick={() => this.deleteDegree(degree.id)}>
             <span className="icon is-small">
               <FontAwesomeIcon icon={faMinusCircle} />
