@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { faPlus, faMinusCircle, faPencilAlt, faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faMinusCircle, faPencilAlt, faCheck, faBuilding, faSitemap, faCalendarDay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { v4 as uuidv4 } from "uuid";
 import ExpItem from "./ExpItem";
@@ -35,6 +35,9 @@ class Experience extends Component {
       },
     };
 
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleExpForm = this.toggleExpForm.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
     this.editItem = this.editItem.bind(this);
     this.changeItem = this.changeItem.bind(this);
@@ -75,6 +78,58 @@ class Experience extends Component {
         return itemToEdit;
       }),
     }));
+  }
+
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState((prevState) => ({
+      itemInput: {
+        itemInfo: {
+          ...prevState.itemInput.itemInfo,
+          [name]: value,
+        },
+        id: this.state.itemInput.id,
+      },
+    }));
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+
+    this.setState({
+      items: [...this.state.items, this.state.itemInput],
+      itemInput: {
+        itemInfo: {
+          company: "",
+          position: "",
+          tasks: "",
+          dateFrom: "",
+          dateTo: "",
+        },
+        id: uuidv4(),
+        isEditable: false,
+      },
+    });
+  }
+
+  toggleExpForm() {
+    document.querySelector(".ItemForm").classList.toggle("is-hidden");
+    this.setState({
+      itemInput: {
+        itemInfo: {
+          company: "",
+          position: "",
+          tasks: "",
+          dateFrom: "",
+          dateTo: "",
+        },
+        id: uuidv4(),
+        isEditable: false,
+      },
+    });
   }
 
   render() {
@@ -123,6 +178,131 @@ class Experience extends Component {
           </button>
         </header>
         <ul className="ItemList mt-2">{workItems}</ul>
+        <form className="ItemForm card-content is-flex is-flex-direction-column has-background-info-light mt-5 is-hidden" onSubmit={this.handleSubmit}>
+          <div className="field is-horizontal is-flex is-justify-content-space-evenly">
+            <div className="field-label is-normal">
+              <label className="label">Role</label>
+            </div>
+            <div className="field-body">
+              <div className="field">
+                <p className="control is-expanded has-icons-left">
+                  <label htmlFor="company" className="is-sr-only">
+                    Company
+                  </label>
+                  <input
+                    id="company"
+                    name="company"
+                    className="input"
+                    type="text"
+                    placeholder="Company"
+                    value={this.state.itemInput.itemInfo.company}
+                    onChange={this.handleInputChange}
+                    required
+                  />
+                  <span className="icon is-small is-left">
+                    <FontAwesomeIcon icon={faBuilding} />
+                  </span>
+                </p>
+              </div>
+              <div className="field">
+                <p className="control is-expanded has-icons-left">
+                  <label htmlFor="position" className="is-sr-only">
+                    Position
+                  </label>
+                  <input
+                    id="position"
+                    name="position"
+                    className="input"
+                    type="text"
+                    placeholder="Position"
+                    value={this.state.itemInput.itemInfo.position}
+                    onChange={this.handleInputChange}
+                    required
+                  />
+                  <span className="icon is-small is-left">
+                    <FontAwesomeIcon icon={faSitemap} />
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="field is-horizontal is-flex is-justify-content-space-evenly">
+            <div className="field-label is-normal">
+              <label className="label">Dates</label>
+            </div>
+            <div className="field-body">
+              <div className="field">
+                <p className="control is-expanded has-icons-left">
+                  <label htmlFor="dateFrom" className="is-sr-only">
+                    From
+                  </label>
+                  <input
+                    id="dateFrom"
+                    name="dateFrom"
+                    className="input"
+                    type="text"
+                    placeholder="From"
+                    value={this.state.itemInput.itemInfo.dateFrom}
+                    onChange={this.handleInputChange}
+                    required
+                  />
+                  <span className="icon is-small is-left">
+                    <FontAwesomeIcon icon={faCalendarDay} />
+                  </span>
+                </p>
+              </div>
+              <div className="field">
+                <p className="control is-expanded has-icons-left">
+                  <label htmlFor="dateTo" className="is-sr-only">
+                    To
+                  </label>
+                  <input
+                    id="dateTo"
+                    name="dateTo"
+                    className="input"
+                    type="text"
+                    placeholder="To"
+                    value={this.state.itemInput.itemInfo.dateTo}
+                    onChange={this.handleInputChange}
+                    required
+                  />
+                  <span className="icon is-small is-left">
+                    <FontAwesomeIcon icon={faCalendarDay} />
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="field is-horizontal is-flex is-justify-content-space-evenly">
+            <div className="field-label is-normal">
+              <label className="label">Description</label>
+            </div>
+            <div className="field-body">
+              <div className="field">
+                <label htmlFor="tasks" className="is-sr-only">
+                  Description
+                </label>
+                <textarea
+                  id="tasks"
+                  name="tasks"
+                  className="textarea"
+                  placeholder="Built RESTful APIs..."
+                  value={this.state.itemInput.itemInfo.tasks}
+                  onChange={this.handleInputChange}
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div className="button-container is-flex is-justify-content-center">
+            <button type="submit" className="button is-primary mb-4 mr-2">
+              Submit
+            </button>
+            <button type="button" className="button is-danger mb-4" onClick={this.toggleExpForm}>
+              Cancel
+            </button>
+          </div>
+        </form>
       </section>
     );
   }
