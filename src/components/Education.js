@@ -145,14 +145,16 @@ class Education extends Component {
         );
       }
       return (
-        <li key={degree.id} className="is-flex is-align-items-baseline">
+        <li key={degree.id} className="is-flex is-align-items-baseline is-justify-content-space-between">
           <DegreeItem degreeInfo={degree.degreeInfo} id={degree.id} isEditable={degree.isEditable} changeDegree={this.changeDegree} />
-          {editBtn}
-          <button className="button is-ghost has-text-danger-dark pl-2" aria-label="Delete Degree" onClick={() => this.deleteDegree(degree.id)}>
-            <span className="icon is-small">
-              <FontAwesomeIcon icon={faMinusCircle} />
-            </span>
-          </button>
+          <div>
+            {editBtn}
+            <button className="button is-ghost has-text-danger-dark pl-2" aria-label="Delete Degree" onClick={() => this.deleteDegree(degree.id)}>
+              <span className="icon is-small">
+                <FontAwesomeIcon icon={faMinusCircle} />
+              </span>
+            </button>
+          </div>
         </li>
       );
     });
