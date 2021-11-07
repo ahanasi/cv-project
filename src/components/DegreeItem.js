@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { faEdit } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class DegreeItem extends Component {
   constructor(props) {
