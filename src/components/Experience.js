@@ -36,6 +36,25 @@ class Experience extends Component {
     };
   }
 
+  deleteItem(itemID) {
+    const items = this.state.items.filter((item) => item.id !== itemID);
+    this.setState({ items: items });
+  }
+
+  editItem(itemID) {
+    const itemIndex = this.state.items.findIndex((item) => item.id === itemID);
+
+    this.setState((prevState) => ({
+      items: prevState.items.map((item, i) => {
+        const itemToEdit = Object.assign({}, item);
+        if (i === itemIndex) {
+          itemToEdit.isEditable = !itemToEdit.isEditable;
+        }
+        return itemToEdit;
+      }),
+    }));
+  }
+
   render() {
     const workItems = this.state.items.map((item) => {
       let editBtn;
@@ -81,7 +100,7 @@ class Experience extends Component {
             <span>Add Work Experience</span>
           </button>
         </header>
-        <ul className="DegreeList mt-2">{workItems}</ul>
+        <ul className="ItemList mt-2">{workItems}</ul>
       </section>
     );
   }
