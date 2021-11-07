@@ -16,3 +16,7 @@ code {
 .input.is-small {
   width: 18rem;
 }
+
+.tasks {
+  white-space: pre-wrap;
+}
