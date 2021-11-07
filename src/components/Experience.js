@@ -137,7 +137,7 @@ class Experience extends Component {
       let editBtn;
       if (item.isEditable) {
         editBtn = (
-          <button className="button is-ghost has-text-success" aria-label="Edit Work Experience" onClick={() => this.editItem(item.id)}>
+          <button className="button is-ghost has-text-success no-print" aria-label="Edit Work Experience" onClick={() => this.editItem(item.id)}>
             <span className="icon is-small">
               <FontAwesomeIcon icon={faCheck} />
             </span>
@@ -145,7 +145,7 @@ class Experience extends Component {
         );
       } else {
         editBtn = (
-          <button className="button is-ghost has-text-info-dark" aria-label="Edit Work Experience" onClick={() => this.editItem(item.id)}>
+          <button className="button is-ghost has-text-info-dark no-print" aria-label="Edit Work Experience" onClick={() => this.editItem(item.id)}>
             <span className="icon is-small">
               <FontAwesomeIcon icon={faPencilAlt} />
             </span>
@@ -157,7 +157,7 @@ class Experience extends Component {
           <ExpItem itemInfo={item.itemInfo} id={item.id} isEditable={item.isEditable} changeItem={this.changeItem} />
           <div>
             {editBtn}
-            <button className="button is-ghost has-text-danger-dark pl-2" aria-label="Delete Work Experience" onClick={() => this.deleteItem(item.id)}>
+            <button className="button is-ghost has-text-danger-dark pl-2 no-print" aria-label="Delete Work Experience" onClick={() => this.deleteItem(item.id)}>
               <span className="icon is-small">
                 <FontAwesomeIcon icon={faMinusCircle} />
               </span>
@@ -170,7 +170,7 @@ class Experience extends Component {
       <section className="work-experience">
         <header className="is-flex is-justify-content-space-between is-align-items-baseline	">
           <h2 className="has-text-info is-size-3">Work Experience</h2>
-          <button type="button" className="button is-ghost has-text-info-dark" onClick={this.toggleExpForm}>
+          <button type="button" className="button is-ghost has-text-info-dark no-print" onClick={this.toggleExpForm}>
             <span className="icon is-small">
               <FontAwesomeIcon icon={faPlus} />
             </span>
@@ -295,10 +295,10 @@ class Experience extends Component {
             </div>
           </div>
           <div className="button-container is-flex is-justify-content-center">
-            <button type="submit" className="button is-primary mb-4 mr-2">
+            <button type="submit" className="button is-primary mt-4 mr-2">
               Submit
             </button>
-            <button type="button" className="button is-danger mb-4" onClick={this.toggleExpForm}>
+            <button type="button" className="button is-danger mt-4" onClick={this.toggleExpForm}>
               Cancel
             </button>
           </div>

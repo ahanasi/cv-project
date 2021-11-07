@@ -129,7 +129,7 @@ class Education extends Component {
       let editBtn;
       if (degree.isEditable) {
         editBtn = (
-          <button className="button is-ghost has-text-success" aria-label="Edit Degree" onClick={() => this.editDegree(degree.id)}>
+          <button className="button is-ghost has-text-success no-print" aria-label="Edit Degree" onClick={() => this.editDegree(degree.id)}>
             <span className="icon is-small">
               <FontAwesomeIcon icon={faCheck} />
             </span>
@@ -137,7 +137,7 @@ class Education extends Component {
         );
       } else {
         editBtn = (
-          <button className="button is-ghost has-text-info-dark" aria-label="Edit Degree" onClick={() => this.editDegree(degree.id)}>
+          <button className="button is-ghost has-text-info-dark no-print" aria-label="Edit Degree" onClick={() => this.editDegree(degree.id)}>
             <span className="icon is-small">
               <FontAwesomeIcon icon={faPencilAlt} />
             </span>
@@ -149,7 +149,7 @@ class Education extends Component {
           <DegreeItem degreeInfo={degree.degreeInfo} id={degree.id} isEditable={degree.isEditable} changeDegree={this.changeDegree} />
           <div>
             {editBtn}
-            <button className="button is-ghost has-text-danger-dark pl-2" aria-label="Delete Degree" onClick={() => this.deleteDegree(degree.id)}>
+            <button className="button is-ghost has-text-danger-dark pl-2 no-print" aria-label="Delete Degree" onClick={() => this.deleteDegree(degree.id)}>
               <span className="icon is-small">
                 <FontAwesomeIcon icon={faMinusCircle} />
               </span>
@@ -162,7 +162,7 @@ class Education extends Component {
       <section className="Education">
         <header className="is-flex is-justify-content-space-between is-align-items-baseline	">
           <h2 className="has-text-info is-size-3">Education</h2>
-          <button type="button" className="button is-ghost has-text-info-dark" onClick={this.toggleEducationForm}>
+          <button type="button" className="button is-ghost has-text-info-dark no-print" onClick={this.toggleEducationForm}>
             <span className="icon is-small">
               <FontAwesomeIcon icon={faPlus} />
             </span>
