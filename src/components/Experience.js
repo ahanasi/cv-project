@@ -34,6 +34,10 @@ class Experience extends Component {
         isEditable: false,
       },
     };
+
+    this.deleteItem = this.deleteItem.bind(this);
+    this.editItem = this.editItem.bind(this);
+    this.changeItem = this.changeItem.bind(this);
   }
 
   deleteItem(itemID) {
@@ -49,6 +53,24 @@ class Experience extends Component {
         const itemToEdit = Object.assign({}, item);
         if (i === itemIndex) {
           itemToEdit.isEditable = !itemToEdit.isEditable;
+        }
+        return itemToEdit;
+      }),
+    }));
+  }
+
+  changeItem(e, id) {
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
+
+    const itemIndex = this.state.items.findIndex((item) => item.id === id);
+
+    this.setState((prevState) => ({
+      items: prevState.items.map((item, i) => {
+        const itemToEdit = Object.assign({}, item);
+        if (i === itemIndex) {
+          itemToEdit.itemInfo[name] = value;
         }
         return itemToEdit;
       }),
