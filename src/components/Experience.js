@@ -14,9 +14,20 @@ class Experience extends Component {
           itemInfo: {
             company: "Google",
             position: "Junior Software Engineer",
-            tasks: `▪ Built RESTful APIs that served data to our Javascript front-end based on dynamically chosen user inputs that handled over 500,000 concurrent users\n▪ Built internal tool using NodeJS and Pupeteer.js to automate QA and monitoring of customer-facing web app which improved click through rate by 3%`,
-            dateFrom: "May, 2018",
-            dateTo: "August, 2018",
+            tasks: `▪ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \n▪ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
+            dateFrom: "Feb, 2019",
+            dateTo: "Present",
+          },
+          id: uuidv4(),
+          isEditable: false,
+        },
+        {
+          itemInfo: {
+            company: "Twitter",
+            position: "Software Engineering Intern",
+            tasks: `▪ Semper viverra nam libero justo laoreet sit amet cursus. Feugiat pretium nibh ipsum consequat nisl vel pretium lectus. Erat velit scelerisque in dictum non consectetur a erat.\n▪  Morbi enim nunc faucibus a pellentesque sit amet porttitor. Viverra accumsan in nisl nisi scelerisque eu ultrices vitae.`,
+            dateFrom: "May, 2017",
+            dateTo: "August, 2017",
           },
           id: uuidv4(),
           isEditable: false,
@@ -155,7 +166,7 @@ class Experience extends Component {
       return (
         <li key={item.id} className="is-flex is-align-items-baseline is-justify-content-space-between">
           <ExpItem itemInfo={item.itemInfo} id={item.id} isEditable={item.isEditable} changeItem={this.changeItem} />
-          <div>
+          <div className="button-container">
             {editBtn}
             <button className="button is-ghost has-text-danger-dark pl-2 no-print" aria-label="Delete Work Experience" onClick={() => this.deleteItem(item.id)}>
               <span className="icon is-small">
@@ -169,7 +180,7 @@ class Experience extends Component {
     return (
       <section className="work-experience">
         <header className="is-flex is-justify-content-space-between is-align-items-baseline	">
-          <h2 className="has-text-info is-size-3">Work Experience</h2>
+          <h2 className="has-text-info is-size-4">Work Experience</h2>
           <button type="button" className="button is-ghost has-text-info-dark no-print" onClick={this.toggleExpForm}>
             <span className="icon is-small">
               <FontAwesomeIcon icon={faPlus} />
@@ -178,8 +189,8 @@ class Experience extends Component {
           </button>
         </header>
         <ul className="ItemList mt-2">{workItems}</ul>
-        <form className="ItemForm card-content is-flex is-flex-direction-column has-background-info-light mt-5 is-hidden" onSubmit={this.handleSubmit}>
-          <div className="field is-horizontal is-flex is-justify-content-space-evenly">
+        <form className="ItemForm card-content is-flex is-flex-direction-column has-background-info-light mt-5 is-hidden no-print" onSubmit={this.handleSubmit}>
+          <div className="field is-horizontal is-flex is-justify-content-space-evenly no-print">
             <div className="field-label is-normal">
               <label className="label">Role</label>
             </div>
@@ -294,7 +305,7 @@ class Experience extends Component {
               </div>
             </div>
           </div>
-          <div className="button-container is-flex is-justify-content-center">
+          <div className="button-container">
             <button type="submit" className="button is-primary mt-4 mr-2">
               Submit
             </button>

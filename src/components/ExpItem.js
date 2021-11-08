@@ -125,7 +125,7 @@ class ExpItem extends Component {
       );
     } else {
       return (
-        <div className="mt-2 column is-11">
+        <div className="column is-11">
           <p className="is-size-5">
             <span className="has-text-weight-bold">{itemInfo.company}</span> | <span className="is-italic has-text-weight-medium">{itemInfo.position}</span>
           </p>

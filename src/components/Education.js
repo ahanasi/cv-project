@@ -13,8 +13,17 @@ class Education extends Component {
         {
           degreeInfo: {
             school: "University of Pennsylvania",
-            degreeName: "MSE in Bioengineering",
+            degreeName: "MSc. in Computer Science",
             dateEarned: "December, 2018",
+          },
+          id: uuidv4(),
+          isEditable: false,
+        },
+        {
+          degreeInfo: {
+            school: "University of Calgary",
+            degreeName: "BSc. in Computer Science",
+            dateEarned: "May, 2017",
           },
           id: uuidv4(),
           isEditable: false,
@@ -147,7 +156,7 @@ class Education extends Component {
       return (
         <li key={degree.id} className="is-flex is-align-items-baseline is-justify-content-space-between">
           <DegreeItem degreeInfo={degree.degreeInfo} id={degree.id} isEditable={degree.isEditable} changeDegree={this.changeDegree} />
-          <div>
+          <div className="button-container">
             {editBtn}
             <button className="button is-ghost has-text-danger-dark pl-2 no-print" aria-label="Delete Degree" onClick={() => this.deleteDegree(degree.id)}>
               <span className="icon is-small">
@@ -161,7 +170,7 @@ class Education extends Component {
     return (
       <section className="Education">
         <header className="is-flex is-justify-content-space-between is-align-items-baseline	">
-          <h2 className="has-text-info is-size-3">Education</h2>
+          <h2 className="has-text-info is-size-4">Education</h2>
           <button type="button" className="button is-ghost has-text-info-dark no-print" onClick={this.toggleEducationForm}>
             <span className="icon is-small">
               <FontAwesomeIcon icon={faPlus} />
@@ -170,8 +179,8 @@ class Education extends Component {
           </button>
         </header>
         <ul className="DegreeList mt-2">{degreeItems}</ul>
-        <form className="DegreeForm card is-flex is-flex-direction-column has-background-info-light mt-5 is-hidden" onSubmit={this.handleSubmit}>
-          <div className="is-horizontal card-content is-flex is-justify-content-space-evenly">
+        <form className="DegreeForm card is-flex is-flex-direction-column has-background-info-light mt-5 is-hidden no-print" onSubmit={this.handleSubmit}>
+          <div className="is-horizontal card-content is-flex is-justify-content-space-evenly no-print">
             <div className="field-label is-normal">
               <label className="label">Degree Info.</label>
             </div>
@@ -238,7 +247,7 @@ class Education extends Component {
               </div>
             </div>
           </div>
-          <div className="button-container is-flex is-justify-content-center">
+          <div className="button-container">
             <button type="submit" className="button is-primary mb-4 mr-2">
               Submit
             </button>

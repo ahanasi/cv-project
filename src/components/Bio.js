@@ -11,7 +11,7 @@ class Bio extends Component {
       address: "3195 Gambler Ln., Porter, TX 77365",
       email: "text@example.com",
       phone: "(123) 456-789",
-      website: "",
+      website: "https://github.com/jdoetest123",
       isEditable: false,
     };
 

@@ -73,9 +73,11 @@ class DegreeItem extends Component {
       );
     } else {
       return (
-        <p className="is-size-5">
-          <strong>{degreeInfo.school}</strong> – {degreeInfo.degreeName}, {degreeInfo.dateEarned}
-        </p>
+        <div className="mx-3">
+          <p className="is-size-6">
+            <strong>{degreeInfo.school}</strong> – {degreeInfo.degreeName}, {degreeInfo.dateEarned}
+          </p>
+        </div>
       );
     }
   }
