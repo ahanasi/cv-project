@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Bio from "./Bio";
 import Education from "./Education";
 import Experience from "./Experience";
+import Skills from "./Skills";
 
 class Cv extends Component {
   render() {
@@ -12,6 +13,8 @@ class Cv extends Component {
         <Experience />
         <hr />
         <Education />
+        <hr />
+        <Skills />
       </section>
     );
   }

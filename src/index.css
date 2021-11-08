@@ -153,7 +153,7 @@ hr {
 }
 
 .main {
-  min-height: 100%;
+  height: calc(100vh - 95%);
 }
 
 .input.field-body {
@@ -169,8 +169,15 @@ hr {
 }
 
 @media print {
+  .main {
+    height: calc(100vh - 95%);
+  }
+  .css-xb97g8,
   .no-print,
   .no-print * {
     display: none !important;
+  }
+  .css-12jo7m5 {
+    padding: 0.25rem !important;
   }
 }

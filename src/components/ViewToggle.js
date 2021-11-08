@@ -19,6 +19,14 @@ export default class ViewToggle extends Component {
         btns[i].style.display = "inline-flex";
       }
     }
+
+    if (checked) {
+      resume.querySelectorAll(".css-xb97g8").forEach((element) => element.classList.add("is-hidden"));
+      resume.querySelectorAll(".css-12jo7m5").forEach((element) => element.classList.add("p-1"));
+    } else {
+      resume.querySelectorAll(".css-xb97g8").forEach((element) => element.classList.remove("is-hidden"));
+      resume.querySelectorAll(".css-12jo7m5").forEach((element) => element.classList.remove("p-1"));
+    }
   }
 
   render() {
