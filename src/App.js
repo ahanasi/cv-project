@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App has-background-info-light p-2">
       <header className="mx-3 mb-3 is-flex is-flex-direction-column is-align-items-flex-end  no-print">
-        <h1 className="title is-size-2 has-text-weight-light">Resume Builder</h1>
+        <h1 className="title is-size-1 has-text-weight-light">Resume Builder</h1>
         <div className="button-container is-align-items-center">
           <ViewToggle />
           <button className="button is-ghost has-text-info-dark is-medium is-outlined ml-2" aria-label="Print Page" onClick={() => window.print()}>

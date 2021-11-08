@@ -12,6 +12,7 @@ export default class ViewToggle extends Component {
     this.setState({ checked });
     const resume = document.querySelector(".main");
     const btns = resume.getElementsByTagName("button");
+    const selectControl = resume.querySelector(".css-1s2u09g-control");
     for (let i = 0; i < btns.length; i++) {
       if (checked) {
         btns[i].style.display = "none";
@@ -23,9 +24,11 @@ export default class ViewToggle extends Component {
     if (checked) {
       resume.querySelectorAll(".css-xb97g8").forEach((element) => element.classList.add("is-hidden"));
       resume.querySelectorAll(".css-12jo7m5").forEach((element) => element.classList.add("p-1"));
+      selectControl.style.borderStyle = "none";
     } else {
       resume.querySelectorAll(".css-xb97g8").forEach((element) => element.classList.remove("is-hidden"));
       resume.querySelectorAll(".css-12jo7m5").forEach((element) => element.classList.remove("p-1"));
+      selectControl.style.borderStyle = "solid";
     }
   }
 
